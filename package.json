@@ -3,9 +3,9 @@
 	"displayName": "magic require",
 	"publisher": "chaibiqing",
 	"description": "",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"engines": {
-		"vscode": "^1.33.0"
+		"vscode": "^1.30.0"
 	},
 	"categories": [
 		"Other"
