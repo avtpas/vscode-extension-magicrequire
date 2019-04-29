@@ -3,7 +3,7 @@
 	"displayName": "magic require",
 	"publisher": "chaibiqing",
 	"description": "",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
@@ -12,8 +12,7 @@
 	],
 	"main": "./extension.js",
 	"activationEvents": [
-		"onCommand:extension.magicRequire",
-		"onCommand::extension.magicRequireImport"
+		"onCommand:extension.magicRequire"
 	],
 	"contributes": {
 		"configuration": {
@@ -54,14 +53,14 @@
 		"commands": [
 			{
 				"command": "extension.magicRequire",
-				"title": "Magic Require By Require"
-			},
-			{
-				"command": "extension.magicRequireImport",
-				"title": "Magic Require By Import"
+				"title": "Magic Require"
 			}
 		]
 	},
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/avtpas/vscode-extension-magicrequire"
+  },
 	"scripts": {
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "node ./node_modules/vscode/bin/test"

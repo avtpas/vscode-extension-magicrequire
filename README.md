@@ -9,6 +9,8 @@ these situations has been well resolved
 ### with alias
 `import MyModule from '~/client/MyModule'`
 
-## generate settings with .vscode/settings to config the alias and other configs
+generate settings with magicrequire.json or .vscode/settings to config the alias and other configs
 
 **Enjoy!**
+
+**or help me improve it** 
