@@ -3,7 +3,7 @@
 	"displayName": "magic require",
 	"publisher": "chaibiqing",
 	"description": "",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.30.0"
 	},
@@ -16,40 +16,40 @@
 	],
 	"contributes": {
 		"configuration": {
-      "type": "object",
-      "title": "magic require configuration",
-      "properties": {
+			"type": "object",
+			"title": "magic require configuration",
+			"properties": {
 				"magicrequire.alias": {
-          "type": "object",
-          "default": {},
-          "description": "alias for searching and easy importing"
-        },
-        "magicrequire.include": {
-          "type": "array",
-          "default": [
-            "js",
-            "ts",
-            "jsx",
-            "tsx",
-            "vue"
-          ],
-          "description": "include files to search for"
-        },
-        "magicrequire.exclude": {
-          "type": "array",
-          "default": [
-            "node_modules",
-            "typings",
-            "dist",
-            "bin",
-            "build",
-            "tmp",
-            "test"
-          ],
-          "description": "defines files and folders to exclude"
-        }
-      }
-    },
+					"type": "object",
+					"default": {},
+					"description": "alias for searching and easy importing"
+				},
+				"magicrequire.include": {
+					"type": "array",
+					"default": [
+						"js",
+						"ts",
+						"jsx",
+						"tsx",
+						"vue"
+					],
+					"description": "include files to search for"
+				},
+				"magicrequire.exclude": {
+					"type": "array",
+					"default": [
+						"node_modules",
+						"typings",
+						"dist",
+						"bin",
+						"build",
+						"tmp",
+						"test"
+					],
+					"description": "defines files and folders to exclude"
+				}
+			}
+		},
 		"commands": [
 			{
 				"command": "extension.magicRequire",
@@ -58,9 +58,9 @@
 		]
 	},
 	"repository": {
-    "type": "git",
-    "url": "git+https://github.com/avtpas/vscode-extension-magicrequire"
-  },
+		"type": "git",
+		"url": "git+https://github.com/avtpas/vscode-extension-magicrequire"
+	},
 	"scripts": {
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "node ./node_modules/vscode/bin/test"
@@ -71,5 +71,8 @@
 		"eslint": "^5.13.0",
 		"@types/node": "^10.12.21",
 		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"readjson": "^1.1.4"
 	}
 }

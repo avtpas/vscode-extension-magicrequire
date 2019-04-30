@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 const path = require('path');
+const readjson = require('readjson');
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
@@ -9,12 +10,12 @@ function getJSONFile(filename) {
   const folder = vscode.workspace.rootPath;
   try {
     // eslint-disable-next-line
-    const pkg = require(path.join(folder, filename));
+    const pkg = readjson.sync(path.join(folder, filename));
     return pkg;
   } catch (e) {
     console.warn(`Unable to find ${filename}`);
   }
-  return {};
+  return null;
 }
 
 
@@ -46,14 +47,15 @@ function loadInstalledModules() {
 }
 
 function getContextConfiguration() {
-	const config = getJSONFile('magicrequire.json')
-		|| vscode.workspace.getConfiguration('magicrequire')
-		|| {};
-	return config 
+	return getJSONFile('magicrequire.json')
 }
 
 function start(type) {
 	const config = getContextConfiguration();
+	if (!config) {
+		vscode.window.showErrorMessage('file magicrequire.json is required, make one first');
+		return;
+	}
 	const INCLUDE_PATTERN = `**/*.{${config.include.toString()}}`;
 	const EXCLUDE_PATTERN = `**/{${config.exclude.toString()}}`;
 	const installedModules = loadInstalledModules();
@@ -128,14 +130,20 @@ function start(type) {
 			activeTextEditor.edit((edit) => {
 				// 这里最好可以自动创建新行、自动寻找最佳插入位置
 				let position = activeTextEditor.selection.active;
-				const moduleName = (() => {
+				let moduleName = (() => {
 					if (skipFileName) {
 						const arr = parse.dir.split('/');
 						return arr.slice(arr.length - 1, arr.length);
 					}
 					return parse.name;
 				})()
+				if (value.isAbsolute) {
+					moduleName = value.label;
+				}
 
+				if (!/^[A-Za-z]+$/.test(moduleName)) {
+					moduleName = 'Module';
+				}
 				let script = '';
 				if (type === 'require') {
 				script = `const ${moduleName} = require('${importer.label}');\r\n`;

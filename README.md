@@ -1,5 +1,30 @@
 # magic-require README
 
+# Require
+1. new file `magicrequire.json` at root path
+2. fullfill the config like below
+  ```json
+    {
+      "alias": {
+        "~": "." // depends on your own settings
+      },
+      "exclude": [
+        "node_modules",
+        "dist",
+        "bin",
+        "build",
+        "test"
+      ],
+      "include": [
+        "js",
+        "ts",
+        "jsx",
+        "tsx",
+        "vue"
+      ]
+    }
+  `
+
 # USAGE
 
 1. open your file
