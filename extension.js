@@ -98,7 +98,7 @@ function start(type) {
 					const key = alias[a];
 					let formedRelativePath = '';
 					if (!value.isAbsolute) {
-						formedRelativePath = `./${path.relative(vscode.workspace.rootPath, ps.label)}`;
+						formedRelativePath = `./${vscode.workspace.asRelativePath(ps.label)}`;
 					} else {
 						formedRelativePath = ps.label;
 					}
